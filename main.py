@@ -932,18 +932,11 @@ try:
     url = input("\nSite {c}‒ {c2}".format(c=fCiano, c2=fReset))
     url = "{u}{p}".format(u=url, p=path[0])
     res = requests.get(url)
+    print()
 
-    if res.status_code == 200:
-        print("\n{u} {c}Diretório existente{r}".format(u=url, c=fVerde, r=fReset))
-    elif res.status_code == 404:
-        print("\n{u} {c}Diretório inexistente{r}".format(u=url, c=fVermelho, r=fReset))
-    else:
-        print("\n{u} {c}Requisição bloqueada{r}".format(u=url, c=fAmarelo, r=fReset))
-
-    g = 0
-    while g < 889:
-        url = url.replace(path[g], "")
-        url = "{u}{p}".format(u=url, p=path[g+1])
+    for a in range(0, 889):
+        url = url.replace(path[a], "")
+        url = "{u}{p}".format(u=url, p=path[a+1])
         res = requests.get(url)
         if res.status_code == 200:
             print("{u} {c}Diretório existente{r}".format(u=url, c=fVerde, r=fReset))
@@ -952,13 +945,11 @@ try:
         else:
             print("{u} {c}Requisição bloqueada{r}".format(u=url, c=fAmarelo, r=fReset))
 
-        g = g + 1
-
 except KeyboardInterrupt:
     print("\nVolte sempre.")
 
 except requests.exceptions.MissingSchema:
-    print("Seu baiano desgraçado, tá faltando o http no começo >:(")
+    print("Seu baiano desgraçado, cê não viu que o formato certo é http://www.example.com/? >:(")
 
 except requests.exceptions.ConnectionError:
-    print("Seu baiano arrombado, tá faltando um / no final >:(")
+    print("Seu baiano arrombado, cê não viu que o formato certo é http://www.example.com/? >:(")
