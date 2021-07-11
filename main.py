@@ -50,7 +50,7 @@ try:
     elif res.status_code == 404:
         print("{u} {c}Diretório inexistente{r}".format(u=url, c=fVermelho, r=fReset))
     else:
-        print("{u} {c}Requisição bloqueada{r}".format(u=url, c=fAmarelo, r=fReset))
+        print("{u} {c}Requisição bloqueada. Use proxychains seu filho da puta{r}".format(u=url, c=fAmarelo, r=fReset))
 
     for a in range(0, 889):
         url = url.replace(path[a], "")
@@ -61,7 +61,7 @@ try:
         elif res.status_code == 404:
             print("{u} {c}Diretório inexistente{r}".format(u=url, c=fVermelho, r=fReset))
         else:
-            print("{u} {c}Requisição bloqueada{r}".format(u=url, c=fAmarelo, r=fReset))
+            print("{u} {c}Requisição bloqueada. Use proxychains seu filho da puta{r}".format(u=url, c=fAmarelo, r=fReset))
 
 except KeyboardInterrupt:
     print("\nVolte sempre.")
