@@ -33,15 +33,29 @@ fVerde = '\033[1;92m'
 fCiano = '\033[1;36m'
 fReset = '\033[m'
 
-f = open("path.txt", "r")
-path = f.readlines()
-path = list(map(lambda a:a.strip(),path))
-
 try:
     clear()
     time.sleep(1)
     art()
     url = input("\nSite {c}‒ {c2}".format(c=fCiano, c2=fReset))
+    question = input("Deseja personalizar a wordlist? s/N ").lower()
+    if question == "s":
+        wordlist = input("Local da wordlist {c}‒ {c2}".format(c=fCiano, c2=fReset))
+        f = open(wordlist, "r")
+        path = f.readlines()
+        path = list(map(lambda a: a.strip(), path))
+        f = open(wordlist)
+        linhas = 0
+        for item in f:
+            linhas = linhas + 1
+    else:
+        f = open("path.txt", "r")
+        path = f.readlines()
+        path = list(map(lambda a: a.strip(), path))
+        f = open("path.txt")
+        linhas = 0
+        for item in f:
+            linhas = linhas + 1
     url = "{u}{p}".format(u=url, p=path[0])
     print()
     res = requests.get(url)
@@ -51,11 +65,6 @@ try:
         print("{u} {c}Diretório inexistente{r}".format(u=url, c=fVermelho, r=fReset))
     else:
         print("{u} {c}Requisição bloqueada. Use proxychains seu filho da puta{r}".format(u=url, c=fAmarelo, r=fReset))
-
-    f = open("path.txt")
-    linhas = 0
-    for item in f:
-        linhas = linhas + 1
 
     for a in range(0, linhas):
         url = url.replace(path[a], "")
@@ -70,7 +79,7 @@ try:
 
 except KeyboardInterrupt:
     print("\nVolte sempre.")
-    
+
 except IndexError:
     exit()
 
