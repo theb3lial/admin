@@ -52,7 +52,12 @@ try:
     else:
         print("{u} {c}Requisição bloqueada. Use proxychains seu filho da puta{r}".format(u=url, c=fAmarelo, r=fReset))
 
-    for a in range(0, 889):
+    f = open("path.txt")
+    linhas = 0
+    for item in f:
+        linhas = linhas + 1
+
+    for a in range(0, linhas):
         url = url.replace(path[a], "")
         url = "{u}{p}".format(u=url, p=path[a+1])
         res = requests.get(url)
@@ -65,6 +70,9 @@ try:
 
 except KeyboardInterrupt:
     print("\nVolte sempre.")
+    
+except IndexError:
+    exit()
 
 except requests.exceptions.MissingSchema:
     print("Seu baiano desgraçado, cê não viu que o formato certo é http://www.example.com/? >:(")
