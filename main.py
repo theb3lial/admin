@@ -13,7 +13,7 @@ def art():
                  ,/ ).'i
                   |   )-i
                   |   )i
-  {r}b3lial{c}          '   )i
+  {}b3lial{}          '   )i
                  /    |-
             _.-./-.  /z_
              `-. >._\ _ );i.
@@ -22,7 +22,7 @@ def art():
       ,.----'   ) '
       /      )1`
      ///v`-v\\v
-    /v  BP{r2}""".format(r=fReset, c=fCiano, r2=fReset))
+    /v  BP{}""".format(fReset, fCiano, fReset))
 
 fPreto = '\033[2;30m'
 fBranco = '\033[1;97m'
@@ -37,10 +37,10 @@ try:
     clear()
     time.sleep(1)
     art()
-    url = input("\nSite {c}‒ {c2}".format(c=fCiano, c2=fReset))
+    url = input("\nSite {}‒ {}".format(fCiano, fReset))
     question = input("Deseja personalizar a wordlist? s/N ").lower()
     if question == "s":
-        wordlist = input("Local da wordlist {c}‒ {c2}".format(c=fCiano, c2=fReset))
+        wordlist = input("Local da wordlist {}‒ {}".format(fCiano, fReset))
         f = open(wordlist, "r")
         path = f.readlines()
         path = list(map(lambda a: a.strip(), path))
@@ -56,26 +56,26 @@ try:
         linhas = 0
         for item in f:
             linhas = linhas + 1
-    url = "{u}{p}".format(u=url, p=path[0])
+    url = "{}{}".format(url, path[0])
     print()
     res = requests.get(url)
     if res.status_code == 200:
-        print("{u} {c}Diretório existente{r}".format(u=url, c=fVerde, r=fReset))
+        print("{} {}Diretório existente{}".format(url, fVerde, fReset))
     elif res.status_code == 404:
-        print("{u} {c}Diretório inexistente{r}".format(u=url, c=fVermelho, r=fReset))
+        print("{} {}Diretório inexistente{}".format(url, fVermelho, fReset))
     else:
-        print("{u} {c}Requisição bloqueada. Use proxychains seu filho da puta{r}".format(u=url, c=fAmarelo, r=fReset))
+        print("{} {}Requisição bloqueada. Use proxychains seu filho da puta{}".format(url, fAmarelo, fReset))
 
     for a in range(0, linhas):
         url = url.replace(path[a], "")
-        url = "{u}{p}".format(u=url, p=path[a+1])
+        url = "{}{}".format(url, path[a+1])
         res = requests.get(url)
         if res.status_code == 200:
-            print("{u} {c}Diretório existente{r}".format(u=url, c=fVerde, r=fReset))
+            print("{} {}Diretório existente{}".format(url, fVerde, fReset))
         elif res.status_code == 404:
-            print("{u} {c}Diretório inexistente{r}".format(u=url, c=fVermelho, r=fReset))
+            print("{} {}Diretório inexistente{}".format(url, fVermelho, fReset))
         else:
-            print("{u} {c}Requisição bloqueada. Use proxychains seu filho da puta{r}".format(u=url, c=fAmarelo, r=fReset))
+            print("{} {}Requisição bloqueada. Use proxychains seu filho da puta{}".format(url, fAmarelo, fReset))
 
 except KeyboardInterrupt:
     print("\nVolte sempre.")
