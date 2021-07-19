@@ -83,11 +83,14 @@ try:
 except KeyboardInterrupt:
     print(f"\nVolte sempre.")
 
-except IndexError:
-    exit()
-
 except requests.exceptions.MissingSchema:
     print(f"Seu baiano desgraçado, cê não viu que o formato certo é http://www.example.com/? >:(")
 
 except requests.exceptions.ConnectionError:
     print(f"Seu baiano arrombado, cê não viu que o formato certo é http://www.example.com/? >:(")
+
+except FileNotFoundError:
+    print("Wordlist não encontrada.")
+
+except IndexError:
+    exit()
