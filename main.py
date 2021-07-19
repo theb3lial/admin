@@ -39,7 +39,7 @@ try:
     art()
     url = input(f"\nSite {fCiano}‒ {fReset}")
     question = input(f"Deseja personalizar a wordlist? s/N ").lower()
-    if question == "s":
+    if question == "s" or question == 'y':
         wordlist = input(f"Local da wordlist {fCiano}‒ {fReset}")
         f = open(wordlist, "r")
         path = f.readlines()
@@ -61,7 +61,7 @@ try:
     res = requests.get(url)
     if res.status_code == 200:
         print(f"{url} {fVerde}Diretório existente{fReset}")
-        file = open("200.txt", "w")
+        file = open("code 200.txt", "w")
         file.write(f"{url}\n")
     elif res.status_code == 404:
         print(f"{url} {fVermelho}Diretório inexistente{fReset}")
