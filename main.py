@@ -61,10 +61,12 @@ try:
     res = requests.get(url)
     if res.status_code == 200:
         print(f"{url} {fVerde}Diretório existente{fReset}")
+        file = open("200.txt", "w")
+        file.write(f"{url}\n")
     elif res.status_code == 404:
         print(f"{url} {fVermelho}Diretório inexistente{fReset}")
     else:
-        print(f"{url} {fAmarelo}Requisição bloqueada. Use proxychains seu filho da puta{fReset}")
+        print(f"{url} {fAmarelo}Requisição bloqueada. Tente usar proxychains - VPN.{fReset}")
 
     for a in range(0, linhas):
         url = url.replace(path[a], "")
@@ -72,10 +74,11 @@ try:
         res = requests.get(url)
         if res.status_code == 200:
             print(f"{url} {fVerde}Diretório existente{fReset}")
+            file.write(f"{url}\n")
         elif res.status_code == 404:
             print(f"{url} {fVermelho}Diretório inexistente{fReset}")
         else:
-            print(f"{url} {fAmarelo}Requisição bloqueada. Use proxychains seu filho da puta{fReset}")
+            print(f"{url} {fAmarelo}Requisição bloqueada. Tente usar proxychains - VPN.{fReset}")
 
 except KeyboardInterrupt:
     print(f"\nVolte sempre.")
