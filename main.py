@@ -1,6 +1,6 @@
 import requests
 import os
-import time
+from time import sleep
 
 def clear():
     os.system(["clear", "cls"][os.name == "nt"])
@@ -35,7 +35,7 @@ fReset = '\033[m'
 
 try:
     clear()
-    time.sleep(1)
+    sleep(1)
     art()
     url = input(f"\nSite {fCiano}‒ {fReset}")
     question = input(f"Deseja personalizar a wordlist? s/N ").lower()
